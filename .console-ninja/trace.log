@@ -4705,3 +4705,43 @@
 01:58:09.604 info host looking for tools to patch
 01:58:09.641 info host found 0 tool file(s) to patch
 01:58:09.676 info host completed tools discovery and integration
+02:09:05.408 ERR! host uncaught exception: No clients connected
+02:09:15.650 info host scheduling tools patching
+02:09:15.787 info host scheduling tools patching
+02:09:17.794 info host looking for tools to patch
+02:09:17.830 info host found 0 tool file(s) to patch
+02:09:24.695 info host scheduling tools patching
+02:09:26.700 info host looking for tools to patch
+02:09:26.721 info host found 0 tool file(s) to patch
+02:09:36.099 info host scheduling tools patching
+02:09:38.111 info host looking for tools to patch
+02:09:38.134 info host found 0 tool file(s) to patch
+02:09:48.933 info host scheduling tools patching
+02:09:50.934 info host looking for tools to patch
+02:09:50.954 info host found 0 tool file(s) to patch
+02:10:55.214 ERR! host uncaught exception: No clients connected
+02:18:31.512 info host scheduling tools patching
+02:18:31.518 info host scheduling tools patching
+02:18:33.527 info host looking for tools to patch
+02:18:33.536 info host looking for tools to patch
+02:18:33.737 info host found 2 tool file(s) to patch
+02:18:33.754 info host found 2 tool file(s) to patch
+02:18:33.815 info host patching c:\users\archi\desktop\mern stack\ecomerce-live\frontend\node_modules\vite\bin\vite.js
+02:18:33.895 info host Host's startup and patch time: 1251500 ms
+02:18:33.932 info host patching c:\users\archi\desktop\mern stack\ecomerce-live\frontend\node_modules\vite\bin\vite.js
+02:18:34.061 info host Host's startup and patch time: 1225848 ms
+02:18:41.398 info buildHook-40440 installing build hook for vite at c:\users\archi\desktop\mern stack\ecomerce-live\frontend, node v20.11.0
+02:18:41.442 info host client connected: buildHook { address: '127.0.0.1', family: 'IPv4', port: 64255 }
+02:18:41.444 info host client connected: buildHook { address: '127.0.0.1', family: 'IPv4', port: 64278 }
+02:18:41.457 WARN host ✘ vite v5.4.3 is not yet supported in the Community edition of Console Ninja.
+02:18:41.458 WARN host We are working hard on it for you https://tinyurl.com/3h9mtwra.
+02:18:41.458 WARN host 
+02:18:41.458 WARN host Estimated release dates:
+02:18:41.458 WARN host   - Community users: around 3rd November, 2024 (subject to team availability)
+02:18:41.458 WARN host   - PRO users:       priority access is available now
+02:18:41.462 WARN host ✘ vite v5.4.3 is not yet supported in the Community edition of Console Ninja.
+02:18:41.462 WARN host We are working hard on it for you https://tinyurl.com/3h9mtwra.
+02:18:41.462 WARN host 
+02:18:41.462 WARN host Estimated release dates:
+02:18:41.462 WARN host   - Community users: around 3rd November, 2024 (subject to team availability)
+02:18:41.462 WARN host   - PRO users:       priority access is available now
