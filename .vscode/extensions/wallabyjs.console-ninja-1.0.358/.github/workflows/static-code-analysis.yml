@@ -1,0 +1,65 @@
+name: Static Code Analysis
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+
+    strategy:
+      matrix:
+        node-version: [22]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Remove folders that do not need to be tested
+      if: ${{ success() }}
+      run: rm .github -rf
+    - name: Remove folders that do not need to be tested
+      if: ${{ success() }}
+      run: rm .fleet -rf
+    - name: Remove folders that do not need to be tested
+      if: ${{ success() }}
+      run: rm .idea -rf
+    - name: Remove folders that do not need to be tested
+      if: ${{ success() }}
+      run: rm docker -rf
+    - name: Remove folders that do not need to be tested
+      if: ${{ success() }}
+      run: rm .vscode -rf
+    - name: Install semgrep
+      if: ${{ success() }}
+      run: python3 -m pip install semgrep
+    - name: Run semgrep with ci rules
+      if: ${{ success() }}
+      run: semgrep --config=p/ci
+    - name: Install package dependencies
+      if: ${{ success() }}
+      working-directory: ./webview
+      run: npm install
+    - name: Install package dependencies
+      if: ${{ success() }}
+      run: npm install
+    - name: Run Typescript Type Checks
+      if: ${{ success() }}
+      run: npm run ts-check
+    - name: Create new issue if unit tests failed
+      if: ${{ failure() }}
+      run: |
+        curl --request POST \
+        --url https://api.github.com/repos/${{ github.repository }}/issues \
+        --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+        --header 'content-type: application/json' \
+        --data '{
+          "title": "Static Code Analysis Failure",
+          "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}** because static code analysis failed."
+          }'
+

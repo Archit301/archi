@@ -1,0 +1,44 @@
+name: Unit Test
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+
+    strategy:
+      matrix:
+        node-version: [22]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install repository dependencies
+      if: ${{ success() }}
+      run: npm install
+    - name: Install repository dependencies
+      if: ${{ success() }}
+      working-directory: ./webview
+      run: npm install
+    - name: Run unit tests
+      if: ${{ success() }}
+      run: npm run test
+    - name: Create new issue if unit tests failed
+      if: ${{ failure() }}
+      run: |
+        curl --request POST \
+        --url https://api.github.com/repos/${{ github.repository }}/issues \
+        --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+        --header 'content-type: application/json' \
+        --data '{
+          "title": "Unit test failure",
+          "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}** because unit tests failed."
+          }'
+
